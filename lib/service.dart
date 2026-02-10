@@ -15,3 +15,9 @@ Future<void> deletestudent(String id,BuildContext context)async{
   await FirebaseFirestore.instance.collection("students").doc(id).delete();
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Student Deleted")));
 }
+Future<void> updatestudent(String id,String name,String email,String course,BuildContext context)async{
+  await FirebaseFirestore.instance.collection("students").doc(id).update({
+    "name":name,"email": email,"course":course,
+});
+ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Student Updated")));
+}
